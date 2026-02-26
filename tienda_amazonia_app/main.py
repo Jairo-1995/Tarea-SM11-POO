@@ -7,15 +7,15 @@ def mostrar_menu():
 
     print("""
 ==============================================================
-    SISTEMA DE GESTIÓN DE INVENTARIOS - PRODUCTOS AMAZÓNICOS
+🛒  SISTEMA DE GESTIÓN DE INVENTARIOS🗃️ - 🍌PRODUCTOS AMAZÓNICOS  📋
 ==============================================================
-    1. Añadir nuevo producto
-    2. Eliminar producto por ID
-    3. Actualizar cantidad o precio de producto
-    4. Buscar y mostrar producto por nombre
-    5. Mostrar todo los productos en el inventario
-    6. Consultar valor total del inventario
-    7. Salir del sistema
+    1. ➕ Añadir nuevo producto 🍇
+    2. ❌ Eliminar producto por ID 🗑️
+    3. 🔄 Actualizar cantidad o precio de producto🧾
+    4. 🔍 Buscar y mostrar producto por nombre📜
+    5. 📦 Mostrar todos los productos en el inventario🗃️
+    6. 💰 Consultar valor total del inventario💵
+    7. 🚪 Salir del sistema🚶‍➡️
 ============================================================
     """)
     
@@ -25,7 +25,7 @@ def obtener_numero_positivo(mensaje, es_entero=False):
         try:
             valor = input(mensaje).strip()
             if not valor:
-                print("Error: El valor no puede estar vacío.")
+                print("❗ Error: El valor no puede estar vacío.")
                 continue
             if es_entero:
                 numero = int(valor)
@@ -37,7 +37,7 @@ def obtener_numero_positivo(mensaje, es_entero=False):
             return numero
         except ValueError:
             tipo = "entero" if es_entero else "número decimal"
-            print(f"Error: Ingresa un {tipo} válido.")
+            print(f"❗ Error: Ingresa un {tipo} válido.")
 
 
 def obtener_texto_requerido(mensaje):
@@ -46,7 +46,7 @@ def obtener_texto_requerido(mensaje):
         valor = input(mensaje).strip()
         if valor:
             return valor
-        print("Error: Este campo no puede estar vacío.")
+        print("❗ Error: Este campo no puede estar vacío.")
 
 
 def obtener_id():
@@ -102,20 +102,20 @@ def actualizar_producto(inventario):
             try:
                 nueva_cantidad = int(cantidad_str)
                 if nueva_cantidad < 0:
-                    print("Error: La cantidad debe ser no negativa.")
+                    print("❌ Error: La cantidad debe ser no negativa.")
                     return
             except ValueError:
-                print("Error: La cantidad debe ser un número entero.")
+                print("❌ Error: La cantidad debe ser un número entero.")
                 return
         
         if precio_str:
             try:
                 nuevo_precio = float(precio_str)
                 if nuevo_precio < 0:
-                    print("Error: El precio debe ser no negativo.")
+                    print("❌ Error: El precio debe ser no negativo.")
                     return
             except ValueError:
-                print("Error: El precio debe ser un número válido.")
+                print("❌ Error: El precio debe ser un número válido.")
                 return
         
         inventario.actualizar_producto(id_producto, nueva_cantidad, nuevo_precio, nueva_categoria)
@@ -158,7 +158,7 @@ def consultar_valor_total(inventario):
 def main():
     """Función principal del programa."""
     inventario = Inventario()
-    print("\n✓ Sistema iniciado. Inventario cargado correctamente.")
+    print("\n✅ Sistema iniciado. Inventario cargado correctamente.")
     
     while True:
         try:
@@ -179,15 +179,15 @@ def main():
                 consultar_valor_total(inventario)
             elif opcion == "7":
                 print("\n" + "=" * 60)
-                print("Gracias por usar el Sistema de Gestión de Inventarios.")
-                print("¡Hasta luego!")
+                print("🙏 Gracias por usar el Sistema de Gestión de Inventarios.")
+                print("👋 ¡Hasta luego!")
                 print("=" * 60)
                 break
             else:
                 print("❌ Opción inválida. Por favor, selecciona una opción entre 1 y 7.")
         
         except KeyboardInterrupt:
-            print("\n\n⚠ Programa interrumpido por el usuario.")
+            print("\n\n⚠️  Programa interrumpido por el usuario.")
             break
         except Exception as e:
             print(f"❌ Error inesperado en el programa principal: {e}")

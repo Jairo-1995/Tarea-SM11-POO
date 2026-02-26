@@ -39,13 +39,13 @@ class Inventario:
                             self._productos.append(producto)
                         except ValueError:
                             print(f"Advertencia: Línea corrupta en archivo de inventario ignorada: {line}")
-            print("Inventario cargado exitosamente desde archivo.✅")
+            print("✅ Inventario cargado exitosamente desde archivo.")
         except FileNotFoundError:
-            print("Archivo de inventario no encontrado. Se creará uno nuevo al añadir productos.")
+            print("📁 Archivo de inventario no encontrado. Se creará uno nuevo al añadir productos.")
         except PermissionError:
-            print("Error de permisos al leer el archivo de inventario.❌")
+            print("❌ Error de permisos al leer el archivo de inventario.")
         except Exception as e:
-            print(f"Error inesperado al cargar inventario: {e}")
+            print(f"❌ Error inesperado al cargar inventario: {e}")
 
     def _guardar_inventario(self):
         """
@@ -58,10 +58,10 @@ class Inventario:
                     f.write(f"{producto.get_id()},{producto.get_nombre()},{producto.get_categoria()},{producto.get_cantidad()},{producto.get_precio()}\n")
             return True
         except PermissionError:
-            print("Error de permisos al guardar el inventario.❌")
+            print("❌ Error de permisos al guardar el inventario.")
             return False
         except Exception as e:
-            print(f"Error inesperado al guardar inventario: {e}")
+            print(f"❌ Error inesperado al guardar inventario: {e}")
             return False
 
     def _buscar_indice_por_id(self, id):
@@ -77,22 +77,22 @@ class Inventario:
     def añadir_producto(self, id, nombre, categoria, cantidad, precio):
         # Validaciones
         if not isinstance(cantidad, int) or cantidad < 0:
-            print("Error❌: Cantidad debe ser un entero no negativo.")
+            print("❌ Error: Cantidad debe ser un entero no negativo.")
             return False
         if not isinstance(precio, (int, float)) or precio < 0:
-            print("Error❌: Precio debe ser un número no negativo.")
+            print("❌ Error: Precio debe ser un número no negativo.")
             return False
         if self._buscar_indice_por_id(id) != -1:
-            print("Este número ya existe.")
+            print("❌ Este número ya existe.")
             return False
         
         nuevo_producto = Producto(id, nombre, cantidad, precio, categoria)
         self._productos.append(nuevo_producto)
         
         if self._guardar_inventario():
-            print(f"Producto '{nombre}' añadido exitosamente y guardado en archivo.")
+            print(f"✅ Producto '{nombre}' añadido exitosamente y guardado en archivo.")
         else:
-            print(f"Producto '{nombre}' añadido, pero error al guardar en archivo.")
+            print(f"⚠️ Producto '{nombre}' añadido, pero error al guardar en archivo.")
         return True
 
     def eliminar_producto(self, id):
@@ -101,9 +101,9 @@ class Inventario:
             self._productos.pop(indice)
             
             if self._guardar_inventario():
-                print(f"Producto con ID {id} eliminado y cambios guardados en archivo.")
+                print(f"✅ Producto con ID {id} eliminado y cambios guardados en archivo.")
             else:
-                print(f"Producto con ID {id} eliminado, pero error al guardar en archivo.")
+                print(f"⚠️ Producto con ID {id} eliminado, pero error al guardar en archivo.")
             return True
         print(f"Error: No se encontró un producto con ID {id}.")
         return False
@@ -119,14 +119,14 @@ class Inventario:
         
         if nueva_cantidad is not None:
             if not isinstance(nueva_cantidad, int) or nueva_cantidad < 0:
-                print("Error: Nueva cantidad debe ser un entero no negativo.")
+                print("❌ Error: Nueva cantidad debe ser un entero no negativo.")
                 return False
             producto.set_cantidad(nueva_cantidad)
             cambios_realizados = True
         
         if nuevo_precio is not None:
             if not isinstance(nuevo_precio, (int, float)) or nuevo_precio < 0:
-                print("Error: Nuevo precio debe ser un número no negativo.")
+                print("❌ Error: Nuevo precio debe ser un número no negativo.")
                 return False
             producto.set_precio(nuevo_precio)
             cambios_realizados = True
@@ -136,13 +136,13 @@ class Inventario:
             cambios_realizados = True
         
         if not cambios_realizados:
-            print(f"Advertencia: No se realizaron cambios en el producto con ID {id}.")
+            print(f"⚠️ Advertencia: No se realizaron cambios en el producto con ID {id}.")
             return False
         
         if self._guardar_inventario():
-            print(f"Producto con ID {id} actualizado y cambios guardados en archivo.")
+            print(f"✅ Producto con ID {id} actualizado y cambios guardados en archivo.")
         else:
-            print(f"Producto con ID {id} actualizado, pero error al guardar en archivo.")
+            print(f"⚠️ Producto con ID {id} actualizado, pero error al guardar en archivo.")
         return True
 
     def buscar_productos(self, nombre_parcial):

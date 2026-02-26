@@ -13,3 +13,4 @@
 B003,LIMON,ESPECIES,34,2.3
 A009,Arroz,alimemto,34,34.3
 004A,Carachama,alimento,34,3.4
+12C,CEBOLLA,ALIMENTO,34,2.3
