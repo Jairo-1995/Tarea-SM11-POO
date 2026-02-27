@@ -7,7 +7,7 @@ def mostrar_menu():
 
     print("""
 ==============================================================
-🛒  SISTEMA DE GESTIÓN DE INVENTARIOS🗃️ - 🍌PRODUCTOS AMAZÓNICOS📋
+🛒  SISTEMA DE GESTIÓN DE INVENTARIOS🗃️ - 🍍PRODUCTOS AMAZÓNICOS📋
 ==============================================================
     1. ➕ Añadir nuevo producto 🍇
     2. ❌ Eliminar producto por ID 🗑️
@@ -56,13 +56,13 @@ def obtener_id():
 
 def agregar_producto(inventario):
     """Permite agregar un nuevo producto al inventario."""
-    print("\n--- AÑADIR NUEVO PRODUCTO ---")
+    print("\n--- 🍇 AÑADIR NUEVO PRODUCTO 🛒---")
     try:
         id_producto = obtener_id()
-        nombre = obtener_texto_requerido("Nombre del producto (ej. Aguaje, Cacao): ")
-        categoria = obtener_texto_requerido("Categoría (ej. Frutas, Semillas, Especias): ")
-        cantidad = int(obtener_numero_positivo("Cantidad en stock: ", es_entero=True))
-        precio = obtener_numero_positivo("Precio por unidad ($): ")
+        nombre = obtener_texto_requerido("Nombre del producto (🌽🍌🥑🍋🍇): ")
+        categoria = obtener_texto_requerido("Categoría: ")
+        cantidad = int(obtener_numero_positivo("Cantidad de productos: ", es_entero=True))
+        precio = obtener_numero_positivo("Precio por unidad (💵): ")
         
         inventario.añadir_producto(id_producto, nombre, categoria, cantidad, precio)
     except KeyboardInterrupt:
@@ -73,7 +73,7 @@ def agregar_producto(inventario):
 
 def eliminar_producto(inventario):
     """Permite eliminar un producto del inventario."""
-    print("\n--- ELIMINAR PRODUCTO ---")
+    print("\n---🗑️ ELIMINAR PRODUCTO 🌽---")
     try:
         id_producto = obtener_id()
         inventario.eliminar_producto(id_producto)
@@ -85,7 +85,7 @@ def eliminar_producto(inventario):
 
 def actualizar_producto(inventario):
     """Permite actualizar un producto existente."""
-    print("\n--- ACTUALIZAR PRODUCTO ---")
+    print("\n--- 🔄️ ACTUALIZAR PRODUCTO 🍋---")
     try:
         id_producto = obtener_id()
         print("(Deja vacío si no quieres cambiar algún campo)")
@@ -127,7 +127,7 @@ def actualizar_producto(inventario):
 
 def buscar_producto(inventario):
     """Permite buscar productos por nombre."""
-    print("\n--- BUSCAR PRODUCTO ---")
+    print("\n---  🔎 BUSCAR PRODUCTO 📄---")
     try:
         nombre_parcial = obtener_texto_requerido("Ingresa el nombre (o parte de él) a buscar: ")
         inventario.buscar_productos(nombre_parcial)
@@ -136,25 +136,23 @@ def buscar_producto(inventario):
     except Exception as e:
         print(f"❌ Error inesperado: {e}")
 
-
 def mostrar_inventario_completo(inventario):
     """Muestra todos los productos del inventario."""
-    print("\n--- INVENTARIO COMPLETO ---")
+    print("\n--- 🗃️  INVENTARIO COMPLETO 📜 ---")
     try:
         inventario.mostrar_inventario()
     except Exception as e:
         print(f"❌ Error inesperado: {e}")
 
-
+# Permite consultar el valor total del inventario, con manejo de errores
 def consultar_valor_total(inventario):
     """Muestra el valor total del inventario."""
-    print("\n--- VALOR TOTAL DEL INVENTARIO ---")
+    print("\n--- 💰 VALOR TOTAL DEL INVENTARIO 💵---")
     try:
         inventario.calcular_valor_total()
     except Exception as e:
         print(f"❌ Error inesperado: {e}")
-
-
+# Función principal del programa, con manejo de errores para interrupciones y excepciones inesperadas
 def main():
     """Función principal del programa."""
     inventario = Inventario()

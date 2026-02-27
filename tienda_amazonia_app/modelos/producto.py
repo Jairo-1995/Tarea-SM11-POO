@@ -47,7 +47,7 @@ class Producto:
 
     # Método para representar el producto como string (útil para imprimir)
     def __str__(self):
-        return f"ID: {self._id}, Nombre: {self._nombre}, Categoría: {self._categoria}, Cantidad: {self._cantidad}, Precio: {self._precio:.2f}"
+        return f"ID: {self._id}  | Nombre: {self._nombre}  | Categoría: {self._categoria}  | Cantidad: {self._cantidad}  | Precio: {self._precio:.2f}"
 
     # ==================== DESTRUCTOR ====================
     # Se ejecuta automáticamente cuando la instancia es eliminada

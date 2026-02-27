@@ -46,7 +46,7 @@ class Inventario:
             print("❌ Error de permisos al leer el archivo de inventario.")
         except Exception as e:
             print(f"❌ Error inesperado al cargar inventario: {e}")
-
+    # ==================== MÉTODOS AUXILIARES ====================
     def _guardar_inventario(self):
         """
         Guarda todos los productos en el archivo de inventario.
@@ -63,7 +63,7 @@ class Inventario:
         except Exception as e:
             print(f"❌ Error inesperado al guardar inventario: {e}")
             return False
-
+ # Busca el índice de un producto por su ID en la lista de productos
     def _buscar_indice_por_id(self, id):
         """
         Busca el índice de un producto por su ID en la lista.
@@ -73,7 +73,7 @@ class Inventario:
             if producto.get_id() == id:
                 return indice
         return -1
-
+      # ==================== MÉTODOS PRINCIPALES ====================
     def añadir_producto(self, id, nombre, categoria, cantidad, precio):
         # Validaciones
         if not isinstance(cantidad, int) or cantidad < 0:
@@ -88,18 +88,18 @@ class Inventario:
         
         nuevo_producto = Producto(id, nombre, cantidad, precio, categoria)
         self._productos.append(nuevo_producto)
-        
+        # Guardar el inventario después de añadir el producto
         if self._guardar_inventario():
             print(f"✅ Producto '{nombre}' añadido exitosamente y guardado en archivo.")
         else:
             print(f"⚠️ Producto '{nombre}' añadido, pero error al guardar en archivo.")
         return True
-
+ # Permite eliminar un producto por su ID, con validación de existencia y manejo de errores al guardar el inventario
     def eliminar_producto(self, id):
         indice = self._buscar_indice_por_id(id)
         if indice != -1:
             self._productos.pop(indice)
-            
+          # Guardar el inventario después de eliminar el producto  
             if self._guardar_inventario():
                 print(f"✅ Producto con ID {id} eliminado y cambios guardados en archivo.")
             else:
@@ -107,13 +107,13 @@ class Inventario:
             return True
         print(f"Error: No se encontró un producto con ID {id}.")
         return False
-
+ # Permite actualizar un producto existente por su ID, con validación de campos y manejo de errores al guardar el inventario
     def actualizar_producto(self, id, nueva_cantidad=None, nuevo_precio=None, nueva_categoria=None):
         indice = self._buscar_indice_por_id(id)
         if indice == -1:
             print(f"Error: No se encontró un producto con ID {id}.")
             return False
-        
+     # Validaciones y actualizaciones   
         producto = self._productos[indice]
         cambios_realizados = False
         
@@ -134,7 +134,7 @@ class Inventario:
         if nueva_categoria is not None:
             producto.set_categoria(nueva_categoria)
             cambios_realizados = True
-        
+        # Si no se realizaron cambios, no es necesario guardar el inventario
         if not cambios_realizados:
             print(f"⚠️ Advertencia: No se realizaron cambios en el producto con ID {id}.")
             return False
@@ -144,7 +144,7 @@ class Inventario:
         else:
             print(f"⚠️ Producto con ID {id} actualizado, pero error al guardar en archivo.")
         return True
-
+   # Permite buscar productos por nombre (búsqueda parcial, no sensible a mayúsculas)
     def buscar_productos(self, nombre_parcial):
         resultados = []
         for producto in self._productos:
@@ -155,14 +155,14 @@ class Inventario:
             for prod in resultados:
                 print(prod)
         else:
-            print(f"No se encontraron productos con '{nombre_parcial}' en el nombre.")
+            print(f"No se encontraron productos con el nombre '{nombre_parcial}'❌.")
         return resultados
 
     def mostrar_inventario(self):
         if not self._productos:
             print("===El inventario está vacío.===")
         else:
-            print("===Inventario completo de productos Amazónicos===")
+            print("===🍋Productos Amazónicos🌽===")
             for producto in self._productos:
                 print(producto)
 

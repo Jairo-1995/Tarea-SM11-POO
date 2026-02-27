@@ -1,4 +1,4 @@
-01,platano,producto,45,40.0
+01,platano,alimento,45,4.5
 02,cacao,producto,45,250.0
 03,aguacate,producto,23,35.5
 04,frejol,semilla,59,3.4
@@ -8,9 +8,5 @@
 08,papaya,fruta,45,0.5
 09,guineo,producto,45,3.5
 10,uva,fruta,45,2.15
-11,limon,producto,34,2.3
-12,tilapia,alimento,45,3.5
-B003,LIMON,ESPECIES,34,2.3
-A009,Arroz,alimemto,34,34.3
-004A,Carachama,alimento,34,3.4
-12C,CEBOLLA,ALIMENTO,34,2.3
+11,limon,alimento,342,12.2
+12,yuca,alimento,23,2.3
