@@ -7,7 +7,7 @@ def mostrar_menu():
 
     print("""
 ==============================================================
-🛒  SISTEMA DE GESTIÓN DE INVENTARIOS🗃️ - 🍌PRODUCTOS AMAZÓNICOS  📋
+🛒  SISTEMA DE GESTIÓN DE INVENTARIOS🗃️ - 🍌PRODUCTOS AMAZÓNICOS📋
 ==============================================================
     1. ➕ Añadir nuevo producto 🍇
     2. ❌ Eliminar producto por ID 🗑️
@@ -18,7 +18,7 @@ def mostrar_menu():
     7. 🚪 Salir del sistema🚶‍➡️
 ============================================================
     """)
-    
+
 def obtener_numero_positivo(mensaje, es_entero=False):
     """Valida que el usuario ingrese un número positivo."""
     while True:
